@@ -102,7 +102,7 @@
   DO_MEM1
   MEM2G=2G
   DO_MEM2
-  MEMS=3G
+  MEM3G=3G
   DO_MEM3
 
 #Remove Temp.txt
