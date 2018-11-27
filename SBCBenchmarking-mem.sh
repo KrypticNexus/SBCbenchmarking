@@ -13,7 +13,7 @@
   PURPLE='\e[0;35m'
 
 #Temp Location
-  do_temp() {
+  DO_TEMP() {
   unset TEMP
 
 #Typical RPI settings
@@ -44,7 +44,7 @@
   echo -e $CYAN "Hello! Thank you so much for using my benchmark script!!!"
 
 # Showing Cpu temp.
-  do_temp
+  DO_TEMP
   DO_CPU
   echo -e $YELLOW "CPU Idle Temp=$CYAN$TEMP C" 
 
@@ -57,8 +57,8 @@
  
 # This is where the benchmarking starts.
 
- do_prime() {
- do_temp
+ DO_PRIME() {
+ DO_TEMP
  DO_CPU 
   echo -e $PURPLE "Running Prime to $BENCH Timing Test"
   sysbench --test=cpu --num-threads=$TC --cpu-max-prime=$BENCH run > temp.txt 
@@ -88,13 +88,13 @@
 # Benchmark Variables.
 
   BENCH=5000
-  do_prime
+  DO_PRIME
   BENCH=10000
-  do_prime
+  DO_PRIME
   BENCH=20000
-  do_prime
+  DO_PRIME
   BENCH=50000
-  do_prime
+  DO_PRIME
 
 # Memory size and operations
 
