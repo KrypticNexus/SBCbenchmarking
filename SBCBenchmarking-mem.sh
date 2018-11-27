@@ -51,7 +51,7 @@
 # Time to start stressing the cpu to warm it up.
   
   echo -e $RED "Warming up the CPU for 60 Seconds"
-#  stress --cpu $TC --timeout 60 > /dev/null
+  stress --cpu $TC --timeout 60 > /dev/null
   echo -e $YELLOW "CPU Frequancy=$RED$CS1 MHz"
   echo -e $RED "CPU Temperature=$CYAN$TEMP C" 
  
@@ -67,33 +67,44 @@
   echo -e $YELLOW "CPU Temperature=$CYAN$TEMP C"
  }
  
- DO_MEM()  {
-  echo -e $GREEN "Running Memory Speed Test $MEMS"
-  sysbench --test=memory --memory-total-size=$MEMS run > temp2.txt
-  cat temp2.txt | grep -o  “$MEMS transferred.*" | awk '{print " Memory Speed:" $4 $5}'
+ DO_MEM1()  {
+  echo -e $GREEN "Running Memory Speed Test $MEM1G"
+  sysbench --test=memory --memory-total-size=$MEM1G run > temp.txt
+  cat temp2.txt | grep -o  “1024.00 MB transferred.*" | awk '{print " Memory Speed:" $4 $5}'
  }
 
+ DO_MEM2()  {
+  echo -e $GREEN "Running Memory Speed Test $MEM2G"
+  sysbench --test=memory --memory-total-size=$MEM2G run > temp.txt
+  cat temp2.txt | grep -o  “2048.00 MB transferred.*" | awk '{print " Memory Speed:" $4 $5}'
+ }
+ 
+  DO_MEM3()  {
+  echo -e $GREEN "Running Memory Speed Test $MEM3G"
+  sysbench --test=memory --memory-total-size=$MEM3G run > temp.txt
+  cat temp2.txt | grep -o  “3096.00 MB transferred.*" | awk '{print " Memory Speed:" $4 $5}'
+ }
  
 # Benchmark Variables.
 
-#  BENCH=5000
-#  do_prime
-#  BENCH=10000
-#  do_prime
-#  BENCH=20000
-#  do_prime
-#  BENCH=50000
-#  do_prime
+  BENCH=5000
+  do_prime
+  BENCH=10000
+  do_prime
+  BENCH=20000
+  do_prime
+  BENCH=50000
+  do_prime
 
 # Memory size and operations
 
-  MEMS=1024.00 MB
-  DO_MEM
-  MEMS=2048.00 MB
-  DO_MEM
-  MEMS=3096.00 MB
-  DO_MEM
+  MEM1G=1G
+  DO_MEM1
+  MEM2G=2G
+  DO_MEM2
+  MEMS=3G
+  DO_MEM3
 
 #Remove Temp.txt
   rm temp.txt
-  rm temp2.txt
+
