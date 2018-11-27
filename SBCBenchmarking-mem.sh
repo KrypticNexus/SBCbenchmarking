@@ -70,19 +70,19 @@
  DO_MEM1()  {
   echo -e $GREEN "Running Memory Speed Test $MEM1G"
   sysbench --test=memory --memory-total-size=$MEM1G run > temp.txt
-  cat temp2.txt | grep -o  “1024.00 MB transferred.*" | awk '{print " Memory Speed:" $4 $5}'
+  cat temp2.txt | grep -o  "1024.00 MB transferred.*" | awk '{print " Memory Speed:" $4 $5}'
  }
 
  DO_MEM2()  {
   echo -e $GREEN "Running Memory Speed Test $MEM2G"
   sysbench --test=memory --memory-total-size=$MEM2G run > temp.txt
-  cat temp2.txt | grep -o  “2048.00 MB transferred.*" | awk '{print " Memory Speed:" $4 $5}'
+  cat temp2.txt | grep -o  "2048.00 MB transferred.*" | awk '{print " Memory Speed:" $4 $5}'
  }
  
   DO_MEM3()  {
   echo -e $GREEN "Running Memory Speed Test $MEM3G"
   sysbench --test=memory --memory-total-size=$MEM3G run > temp.txt
-  cat temp2.txt | grep -o  “3096.00 MB transferred.*" | awk '{print " Memory Speed:" $4 $5}'
+  cat temp2.txt | grep -o  "3096.00 MB transferred.*" | awk '{print " Memory Speed:" $4 $5}'
  }
  
 # Benchmark Variables.
