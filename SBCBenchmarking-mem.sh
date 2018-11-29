@@ -82,7 +82,7 @@
   DO_MEM3()  {
   echo -e $GREEN "Running Memory Speed Test $MEM3G"
   sysbench --test=memory --memory-total-size=$MEM3G run > temp.txt
-  cat temp.txt | grep -o  "3096.00 MB transferred.*" | awk '{print " Memory Speed:" $4 $5}'
+  cat temp.txt | grep -o  "3072.00 MB transferred.*" | awk '{print " Memory Speed:" $4 $5}'
  }
  
 # Benchmark Variables.
